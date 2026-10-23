@@ -1,0 +1,153 @@
+/* styles.css - all styling for BizBridge in one file. */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, Segoe UI, Arial, sans-serif;
+  background: #f4f6f9;
+  color: #1c2430;
+}
+
+/* ---- Layout: a centred, phone-like column ---- */
+.app { max-width: 520px; margin: 0 auto; min-height: 100vh; background: #f4f6f9; }
+.header {
+  background: #00a3ad; color: white; padding: 14px 18px;
+  display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 18px;
+}
+.logo { background: white; color: #00a3ad; padding: 2px 8px; border-radius: 4px; font-weight: 800; }
+.content { padding: 18px; }
+h2 { margin: 0 0 2px; }
+.muted { color: #6b7686; margin: 0 0 16px; }
+.error { color: #d64545; }
+
+/* ---- Tabs ---- */
+.tabs { display: flex; background: white; border-bottom: 1px solid #e1e5ea; overflow-x: auto; }
+.tab {
+  flex: 1; padding: 12px 8px; border: none; background: none; cursor: pointer;
+  font-size: 14px; color: #6b7686; border-bottom: 3px solid transparent; white-space: nowrap;
+}
+.tab.active { color: #00a3ad; border-bottom-color: #00a3ad; font-weight: 600; }
+
+/* ---- Cards ---- */
+.card { background: white; border-radius: 12px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.passport-top { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; justify-content: center; }
+
+/* ---- Readiness ring ---- */
+.ring { position: relative; width: 180px; height: 180px; }
+.ring-progress { transition: stroke-dashoffset 1s ease, stroke .5s ease; } /* the animation */
+.ring-label {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+.ring-score { font-size: 34px; font-weight: 700; }
+.ring-text { font-size: 12px; color: #6b7686; }
+
+/* ---- Checklist ---- */
+.checklist { flex: 1; min-width: 200px; }
+.check-item { display: flex; gap: 10px; align-items: flex-start; padding: 6px 0; }
+.check-label { font-weight: 600; font-size: 14px; }
+.check-detail { font-size: 12px; color: #6b7686; }
+.dot { width: 12px; height: 12px; border-radius: 50%; margin-top: 4px; flex-shrink: 0; }
+.dot.green { background: #1a9e5c; }
+.dot.amber { background: #e0a100; }
+.dot.red { background: #d64545; }
+
+/* ---- Banner ---- */
+.banner { margin: 14px 0; padding: 12px 14px; border-radius: 10px; background: #fff4d6; font-size: 14px; }
+.banner-ok { background: #dcf5e7; }
+
+/* ---- Stat cards ---- */
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.stat { display: flex; flex-direction: column; gap: 4px; }
+.stat span { font-size: 12px; color: #6b7686; }
+.stat strong { font-size: 18px; }
+
+/* ---- Buttons ---- */
+.link-btn { margin-top: 18px; background: none; border: none; color: #6b7686; text-decoration: underline; cursor: pointer; }
+
+/* ---- Step 3 additions ---- */
+
+/* Layout helpers */
+.row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.small { font-size: 12px; }
+.card + .card, .card + .banner, .banner + .card { margin-top: 10px; }
+h3 { margin: 0; font-size: 16px; }
+.section-title { margin: 20px 0 10px; }
+
+/* Forms */
+.form { display: flex; flex-direction: column; gap: 12px; }
+.form label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #6b7686; }
+.form input {
+  padding: 10px; border: 1px solid #d5dae1; border-radius: 8px; font-size: 15px;
+}
+
+/* Buttons */
+.btn {
+  background: #00a3ad; color: white; border: none; padding: 12px;
+  border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer;
+}
+.btn-small {
+  background: white; border: 1px solid #00a3ad; color: #00a3ad;
+  padding: 6px 10px; border-radius: 6px; font-size: 12px; cursor: pointer;
+}
+.btn-small.demo { border-color: #8a5cf6; color: #8a5cf6; } /* purple = demo-only action */
+.link-btn.inline { margin: 0; color: #00797f; }
+
+/* Payment link cards */
+.link-card { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+.actions { justify-content: flex-start; flex-wrap: wrap; margin-top: 4px; }
+.tag { padding: 2px 8px; border-radius: 10px; font-size: 11px; text-transform: uppercase; }
+.tag.pending { background: #fff4d6; color: #8a6500; }
+.tag.paid { background: #dcf5e7; color: #12703f; }
+
+/* Bookkeeping */
+.score-strip { display: flex; justify-content: space-around; text-align: center; }
+.big { font-size: 28px; font-weight: 700; }
+.tx { display: flex; flex-direction: column; gap: 4px; }
+.in { color: #1a9e5c; }
+.out { color: #d64545; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.chip {
+  border: 1px solid #00a3ad; background: white; color: #00797f;
+  padding: 6px 12px; border-radius: 16px; font-size: 13px; cursor: pointer;
+}
+.chip:hover { background: #e6f7f8; }
+
+/* ---- Step 4 additions ---- */
+
+/* Five tabs need slightly tighter spacing */
+.tab { padding: 12px 4px; font-size: 13px; }
+
+/* Buttons and lists */
+.btn.full { width: 100%; margin-top: 8px; }
+.plain-list { list-style: none; padding: 0; margin: 10px 0; line-height: 1.9; }
+
+/* Generated documents */
+.doc { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+.table { width: 100%; border-collapse: collapse; }
+.table td { padding: 6px 0; border-bottom: 1px solid #eef0f3; font-size: 14px; }
+.right { text-align: right; }
+
+/* Opportunities */
+.opp { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+.lock { text-align: center; }
+.lock-icon { font-size: 40px; }
+
+/* ---- Step 5 additions ---- */
+
+/* Live score badge in the header (margin-left: auto pushes it to the right) */
+.badge { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+.badge-score {
+  background: white; color: #00797f; padding: 4px 10px;
+  border-radius: 14px; font-size: 13px; font-weight: 700;
+  animation: pop 0.4s ease;
+}
+.badge-gain { color: #d9ffe9; font-weight: 700; animation: pop 0.4s ease; }
+
+/* A quick "grow then settle" animation */
+@keyframes pop {
+  0% { transform: scale(0.8); }
+  60% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}

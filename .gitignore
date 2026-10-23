@@ -1,0 +1,6 @@
+# Keeps big or private folders out of GitHub
+venv/
+__pycache__/
+node_modules/
+dist/
+.env
