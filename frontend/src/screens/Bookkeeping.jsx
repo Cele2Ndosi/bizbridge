@@ -117,7 +117,7 @@ export default function Bookkeeping() {
             <span>{tx.description}</span>
             <span className={tx.amount > 0 ? "in" : "out"}>{rand(tx.amount)}</span>
           </div>
-          <div className="muted small">{tx.category} · {tx.date}</div>
+          <div className="muted small">{tx.category} · {tx.date}{tx.self_reported ? " · cash, self-reported" : ""}</div>
         </div>
       ))}
     </div>

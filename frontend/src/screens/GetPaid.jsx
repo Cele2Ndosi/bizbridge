@@ -84,6 +84,7 @@ export default function GetPaid({ onNavigate }) {
         </label>
         <button className="btn" type="submit">Create payment link</button>
       </form>
+            <CashSale onNavigate={onNavigate} />
 
       {/* Shown after a simulated payment */}
       {notice && (
