@@ -59,6 +59,11 @@ class CategoryIn(BaseModel):
     """The category Lebo picks when asked 'What was this?'."""
     category: str
 
+class CashSaleIn(BaseModel):
+    """Data needed to record a cash sale (no payment link involved)."""
+    description: str
+    amount: float
+    customer: str = "Walk-in"   # optional; defaults to an anonymous customer
 
 # ---------- Endpoints ----------
 
@@ -95,7 +100,19 @@ def categorise(tx_id: str, body: CategoryIn):
             return t
     raise HTTPException(status_code=404, detail="Transaction not found")
 
-
+@app.post("/transactions/cash")
+def record_cash_sale(body: CashSaleIn):
+    """Record a cash sale. It is categorised as a customer payment straight
+    away and flagged self_reported, because cash can't be verified from bank
+    data. It counts toward revenue and bookkeeping, but not toward the
+    digital-payments measure."""
+    if body.amount <= 0:
+        raise HTTPException(status_code=400, detail="Amount must be above zero")
+    tx = store._tx(0, body.description, body.amount,
+                   body.customer or "Walk-in", "Cash", "Customer payment")
+    store.TRANSACTIONS.append(tx)
+    return tx
+    
 @app.post("/payment-links")
 def create_payment_link(body: PaymentLinkIn):
     """Create a payment link Lebo can share on WhatsApp."""

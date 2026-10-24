@@ -43,3 +43,5 @@ export const generateDocuments = () => request("/procurement/generate", "POST");
 export const getQuotation = () => request("/quotation");
 export const registerBusiness = () => request("/business/register", "POST");
 export const getOpportunities = () => request("/opportunities");
+
+export const recordCashSale = (data) => request("/transactions/cash", "POST", data);

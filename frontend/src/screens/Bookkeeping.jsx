@@ -99,7 +99,7 @@ export default function Bookkeeping() {
               <strong>{tx.description}</strong>
               <strong className={tx.amount > 0 ? "in" : "out"}>{rand(tx.amount)}</strong>
             </div>
-            <div className="muted small">{tx.counterparty} · {tx.channel} · {tx.date}</div>
+            <div className="muted small">{tx.counterparty} · {tx.channel} · {tx.date}{tx.self_reported ? " · self-reported" : ""}</div>
             <div className="chips">
               {options.map((c) => (
                 <button key={c} className="chip" onClick={() => handlePick(tx.id, c)}>{c}</button>

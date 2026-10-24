@@ -13,6 +13,7 @@
 import { useEffect, useState } from "react";
 import { createPaymentLink, getPaymentLinks, simulatePayment } from "../api";
 import { rand } from "../format";
+import CashSale from "../components/CashSale";
 
 export default function GetPaid({ onNavigate }) {
   // Form fields, pre-filled so the live demo is quick to run.

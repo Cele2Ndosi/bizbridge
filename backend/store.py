@@ -40,6 +40,7 @@ def _tx(days_ago, description, amount, counterparty, channel, category=None):
         "counterparty": counterparty,
         "channel": channel,
         "category": category,
+        "self_reported": channel == "Cash",   # NEW: cash can't be verified from bank data
     }
 
 
