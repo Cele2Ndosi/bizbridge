@@ -39,6 +39,7 @@ A live score badge in the header shows the number moving on every screen.
 | Payment links, categorisation and document generation flow | The contract opportunities list |
 | Unlock rule (70% readiness) | Transaction data (in-memory sample data, resets on restart) |
 | | Auto-categorisation (simple keyword rules, not AI) |
+| Cash sale recording, labelled self-reported | |
 
 ## Tech stack
 
@@ -105,10 +106,25 @@ Open http://localhost:5173
 ## What we would build next
 
 - Read real FNB transaction data, with the customer's consent
-- Replace keyword categorisation with an AI model
+- Optional accountant sign-off, so packs can be marked "accountant-verified"
+- AI categorisation suggestions that the owner confirms
 - Funding Readiness plan with a 30-day action list
 - Fraud Shield: flag suspicious payment requests and unusual transactions
 - Real payment links and QR payments, company registration and contract-matching partners
+
+## Design decisions and FAQ
+
+**Does it handle cash payments?**
+Yes. Owners record a cash sale in seconds from the Get Paid screen. It counts toward revenue and bookkeeping, but it is labelled self-reported and does not count toward the digital-payments measure, because cash can't be verified from bank data. That way a bank or funder can weigh it differently from bank-verified income.
+
+**What about human verification?**
+Today the owner confirms every category herself, and the "Auto-categorise all" option uses simple keyword rules. Planned, not yet built: flag unusual or low-confidence items for review, and an optional accountant sign-off that marks a procurement pack as "accountant-verified" before it goes to a buyer or funder.
+
+**Why wouldn't an entrepreneur just hire an accountant?**
+Most informal entrepreneurs don't have one, and an accountant works periodically on past records. BizBridge builds the records as the business trades and connects them to contracts and funding readiness. It is also accountant-friendly: clean, categorised records make a later sign-off faster and cheaper.
+
+**How does it generate income?**
+BizBridge would live inside FNB's app, so the return comes from business-banking growth rather than a stand-alone app. Ideas to test: more digital payment volume through payment links, a pipeline of better-documented borrowers, an optional premium tier such as accountant-verified packs, and a matching fee from buyers who post opportunities. These are hypotheses and have not been validated.
 
 ## Team
 
